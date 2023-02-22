@@ -1,13 +1,15 @@
 description: >
-  Sample example description.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained.
+  Most of the logic is contained in the deploy-minigame job.
+
 usage:
   version: 2.1
+
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    minigame-deploy: tactilegames/minigame-deploy@x.y.z
+
   workflows:
     use-my-orb:
       jobs:
-        - <orb-name>/<job-name>
+        - minigame-deploy/deploy-minigame:
+            bucket_project_name: NAME OF THE MINI GAME
+            minigame_version: << pipeline.git.branch >>

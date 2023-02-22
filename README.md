@@ -11,8 +11,18 @@ This repository is designed to be automatically ingested and modified by the Cir
 
 Orb name: tactilegames/minigame-deploy
 
-
 ---
+
+## Requirements
+
+The following environment variables need to be provided in order to run the `deploy-minigame` job.
+- CLOUD_FLARE_EMAIL
+- CLOUD_FLARE_TOKEN
+- CLOUD_FLARE_ZONE_ID
+- GCLOUD_SERVICE_KEY
+- GOOGLE_PROJECT_ID
+
+Make sure to set them up in the project settings or passing them in a context.
 
 ## Resources
 

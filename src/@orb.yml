@@ -2,7 +2,7 @@ version: 2.1
 
 description: >
   Deploys a mini game files from github to google cloud storage.
-  It will sync files committed to github and handles purging cloudflare 
+  It will sync files committed to github and handles purging cloudflare
   cache to allow changes to be visible
 
 display:

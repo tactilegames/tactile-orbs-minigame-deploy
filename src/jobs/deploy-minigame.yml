@@ -1,0 +1,24 @@
+description: >
+  Deploys the mini game and purges the cache
+
+executor: gcp-cli/default
+
+resource_class: medium
+
+parameters:
+  bucket_project_name:
+    type: string
+  minigame_version:
+    type: string
+    description: Name of the version of the minigame. This could be the branch of the mini game github repo.
+
+steps:
+  - checkout
+  - gcp-cli/setup:
+      version: 418.0.0
+  - sync-files:
+      bucket_project_name: << parameters.bucket_project_name >>
+      minigame_version: << parameters.minigame_version >>
+  - purge-cache:
+      bucket_project_name: << parameters.bucket_project_name >>
+      minigame_version: << parameters.minigame_version >>

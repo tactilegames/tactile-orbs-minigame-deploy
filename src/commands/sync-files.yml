@@ -3,7 +3,10 @@ parameters:
   bucket_project_name:
     type: string
     description: Name of the bucket on google cloud storage
+  minigame_version:
+      type: string
+      description: Name of the version of the minigame. This could be the branch of the mini game github repo.
 steps:
   - run:
       name: Sync files to google cloud storage
-      command: gsutil rsync -dr -x '\..*|./[.].*$' . gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< pipeline.git.branch >>
+      command: gsutil rsync -dr -x '\..*|./[.].*$' . gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< parameters.minigame_version >>

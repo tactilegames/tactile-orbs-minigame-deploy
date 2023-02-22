@@ -5,4 +5,5 @@ parameters:
     description: Name of the bucket on google cloud storage
 steps:
   - run:
+      name: Sync files to google cloud storage
       command: gsutil rsync -dr -x '\..*|./[.].*$' . gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< pipeline.git.branch >>

@@ -1,17 +1,19 @@
-description: "Purges the cache on cloudfront"
+description: "Purges the cache on cloudflare"
 parameters:
   bucket_project_name:
     type: string
     description: Name of the bucket on google cloud storage
 steps:
-  - run: |
-      curl --request POST \
-      --url https://api.cloudflare.com/client/v4/zones/${CLOUD_FLARE_ZONE_ID}/purge_cache \
-      --header 'Content-Type: application/json' \
-      --header "X-Auth-Email: ${CLOUD_FLARE_EMAIL}" \
-      --header "X-Auth-Key: ${CLOUD_FLARE_TOKEN}" \
-      --data '{
-        "prefixes": [
-          "minigames.tactilews.com/<< parameters.bucket_project_name >>/<< pipeline.git.branch >>/"
-        ]
-      }'
+  - run:
+      name: Purges cloudflare cache
+      command: |
+        curl --request POST \
+        --url https://api.cloudflare.com/client/v4/zones/${CLOUD_FLARE_ZONE_ID}/purge_cache \
+        --header 'Content-Type: application/json' \
+        --header "X-Auth-Email: ${CLOUD_FLARE_EMAIL}" \
+        --header "X-Auth-Key: ${CLOUD_FLARE_TOKEN}" \
+        --data '{
+          "prefixes": [
+            "minigames.tactilews.com/<< parameters.bucket_project_name >>/<< pipeline.git.branch >>/"
+          ]
+        }'

@@ -1,0 +1,8 @@
+description: "Synchronises files for mini game to google cloud using conventions for repo name and branch"
+parameters:
+  bucket_project_name:
+    type: string
+    description: Name of the bucket on google cloud storage
+steps:
+  - run:
+      command: gsutil rsync -dr -x '\..*|./[.].*$' . gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< pipeline.git.branch >>

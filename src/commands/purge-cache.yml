@@ -1,4 +1,6 @@
-description: "Purges the cache on cloudflare"
+description: >
+  Purges the cache on cloudflare
+
 parameters:
   bucket_project_name:
     type: string
@@ -6,17 +8,10 @@ parameters:
   minigame_version:
     type: string
     description: Name of the version of the minigame. This could be the branch of the mini game github repo.
+
 steps:
   - run:
+      environment:
+        DESTINATION: gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< parameters.minigame_version >>/
       name: Purges cloudflare cache
-      command: |
-        curl --request POST \
-        --url https://api.cloudflare.com/client/v4/zones/${CLOUD_FLARE_ZONE_ID}/purge_cache \
-        --header 'Content-Type: application/json' \
-        --header "X-Auth-Email: ${CLOUD_FLARE_EMAIL}" \
-        --header "X-Auth-Key: ${CLOUD_FLARE_TOKEN}" \
-        --data '{
-          "prefixes": [
-            "minigames.tactilews.com/<< parameters.bucket_project_name >>/<< parameters.minigame_version >>/"
-          ]
-        }'
+      command: << include(scripts/purge-cloudflare-cache.sh) >>

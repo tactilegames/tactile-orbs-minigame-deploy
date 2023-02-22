@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  tactile-orbs-minigame-deploy: tactilegames/tactile-orbs-minigame-deploy@dev:<<pipeline.git.revision>>
+  minigame-deploy: tactilegames/minigame-deploy@dev:<<pipeline.git.revision>>
   orb-tools: circleci/orb-tools@11.5
 
 filters: &filters
@@ -13,7 +13,7 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: tactilegames/tactile-orbs-minigame-deploy
+          orb-name: tactilegames/minigame-deploy
           vcs-type: << pipeline.project.type >>
           pub-type: production
           requires:

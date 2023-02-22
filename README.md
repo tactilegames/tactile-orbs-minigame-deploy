@@ -9,7 +9,8 @@ A project template for Orbs.
 
 This repository is designed to be automatically ingested and modified by the CircleCI CLI's `orb init` command.
 
-_**Edit this area to include a custom title and description.**_
+Orb name: tactilegames/minigame-deploy
+
 
 ---
 

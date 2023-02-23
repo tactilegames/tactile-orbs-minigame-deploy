@@ -6,8 +6,8 @@ curl \
   --header 'Content-Type: application/json' \
   --header "X-Auth-Email: ${CLOUD_FLARE_EMAIL}" \
   --header "X-Auth-Key: ${CLOUD_FLARE_TOKEN}" \
-  --data "{
-    prefixes: [
-      ${PREFIX}
+  --data '{
+    "prefixes": [
+      "'"${PREFIX}"'"
     ]
-  }"
+  }'

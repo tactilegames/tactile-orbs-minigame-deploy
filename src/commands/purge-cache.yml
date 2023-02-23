@@ -12,6 +12,6 @@ parameters:
 steps:
   - run:
       environment:
-        DESTINATION: gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< parameters.minigame_version >>/
+        PREFIX: gs://minigames.tactilews.com/<< parameters.bucket_project_name >>/<< parameters.minigame_version >>/
       name: Purges cloudflare cache
       command: << include(scripts/purge-cloudflare-cache.sh) >>

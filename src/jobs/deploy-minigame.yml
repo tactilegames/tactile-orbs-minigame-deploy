@@ -11,9 +11,14 @@ parameters:
   minigame_version:
     type: string
     description: Name of the version of the minigame. This could be the branch of the mini game github repo.
+  build_command:
+    type: string
+    description: Name of the command to build the mini game
 
 steps:
   - checkout
+  - build-project:
+      build_command: << parameters.build_command >>
   - gcp-cli/setup:
       version: 418.0.0
   - sync-files:

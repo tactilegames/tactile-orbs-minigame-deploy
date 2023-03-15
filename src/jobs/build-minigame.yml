@@ -1,5 +1,5 @@
 description: >
-  Deploys the mini game and purges the cache
+  Checkouts and builds the mini game using npm
 
 executor: build-executor
 resource_class: medium

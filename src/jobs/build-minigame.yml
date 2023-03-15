@@ -1,0 +1,19 @@
+description: >
+  Deploys the mini game and purges the cache
+
+executor: build-executor
+resource_class: medium
+
+parameters:
+  build_command:
+    type: string
+    description: Name of the command to build the mini game
+
+steps:
+  - checkout
+  - build-project:
+      build_command: << parameters.build_command >>
+  - persist_to_workspace:
+      root: .
+      paths:
+        - dist

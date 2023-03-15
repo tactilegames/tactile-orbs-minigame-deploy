@@ -1,0 +1,15 @@
+description: >
+  Builds the project using webpack
+
+parameters:
+  build_command:
+    type: string
+    description: What script to run to build the mini game
+
+steps:
+  - run:
+      name: Install package dependencies
+      command: npm ci
+  - run:
+      name: Run pack minigame command
+      command: npm run << parameters.build_command >>

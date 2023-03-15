@@ -1,0 +1,4 @@
+description: Docker executor building webpack with npm
+
+docker:
+  - image: node:19.7.0

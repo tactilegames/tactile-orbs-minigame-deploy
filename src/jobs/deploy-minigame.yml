@@ -13,7 +13,8 @@ parameters:
     description: Name of the version of the minigame. This could be the branch of the mini game github repo.
 
 steps:
-  - checkout
+  - attach_workspace:
+      at: .
   - gcp-cli/setup:
       version: 418.0.0
   - sync-files:
